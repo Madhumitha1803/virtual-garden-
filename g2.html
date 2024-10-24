@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Herbal Garden</title>
+    <style>
+        /* Body and Background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #eafaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .garden-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        .plant-card {
+            background-color: #f5fff5;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .plant-card:hover {
+            transform: scale(1.05);
+        }
+
+        .plant-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .plant-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .plant-info h3 {
+            margin: 10px 0;
+            color: #2e7d32;
+        }
+
+        .plant-info p {
+            color: #555;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <h1>Virtual Herbal Garden</h1>
+
+    <!-- Search Container -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for a plant..." onkeyup="filterPlants()">
+    </div>
+
+    <div class="garden-container" id="plantContainer">
+        <!-- Plant 1: Basil -->
+        <a href="basil.html" class="plant-card" data-name="basil">
+            <img src="basil.jpg" alt="Basil" class="plant-image">
+            <div class="plant-info">
+                <h3>Basil</h3>
+                <p>Anti-inflammatory properties, used in cooking and herbal remedies.</p>
+            </div>
+        </a>
+
+        <!-- Plant 2: Mint -->
+        <a href="mint.html" class="plant-card" data-name="mint">
+            <img src="mint.jpg" alt="Mint" class="plant-image">
+            <div class="plant-info">
+                <h3>Mint</h3>
+                <p>Relieves digestive issues, nausea, and headaches. Commonly used in teas.</p>
+            </div>
+        </a>
+
+        <!-- Plant 3: Lavender -->
+        <a href="lavender.html" class="plant-card" data-name="lavender">
+            <img src="lavendar.jpg"" alt="Lavender" class="plant-image">
+            <div class="plant-info">
+                <h3>Lavender</h3>
+                <p>Promotes relaxation, improves sleep, and reduces anxiety.</p>
+            </div>
+        </a>
+
+        <!-- Plant 4: Aloe Vera -->
+        <a href="aloe.html" class="plant-card" data-name="aloe vera">
+            <img src="alovera.jpg" alt="Aloe Vera" class="plant-image">
+            <div class="plant-info">
+                <h3>Aloe Vera</h3>
+                <p>Soothes skin burns and promotes wound healing.</p>
+            </div>
+        </a>
+
+        <!-- Plant 5: Rosemary -->
+        <a href="rosemary.html" class="plant-card" data-name="rosemary">
+            <img src="rosemary.jpg" alt="Rosemary" class="plant-image">
+            <div class="plant-info">
+                <h3>Rosemary</h3>
+                <p>Enhances memory and concentration. Used in aromatherapy.</p>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        // JavaScript function to filter plants based on search input
+        function filterPlants() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const plantCards = document.querySelectorAll('.plant-card');
+
+            plantCards.forEach(card => {
+                const plantName = card.getAttribute('data-name').toLowerCase();
+                if (plantName.includes(input)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
